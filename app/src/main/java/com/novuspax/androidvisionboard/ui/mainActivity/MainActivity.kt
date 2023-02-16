@@ -1,9 +1,7 @@
-package com.novuspax.androidvisionboard
+package com.novuspax.androidvisionboard.ui.mainActivity
 
-import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Button
 import android.widget.RelativeLayout
