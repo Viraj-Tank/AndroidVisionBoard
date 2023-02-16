@@ -1,4 +1,4 @@
-Android Building blocks
+##Android Building blocks
 
 - Activities
 - Fragments
@@ -6,7 +6,7 @@ Android Building blocks
 - Broadcast Receiver
 
 
-// Activity Lifecycle
+## Activity Lifecycle
 
 - FIRST TIME ENTERS 
 onCreate --> onStart --> onResume5
@@ -17,15 +17,12 @@ onPause --> onStop
 - WHEN USER COMES BACK TO APP 
 onRestart --> onStart --> onResume
 
-// Fragment Lifecycle
+## Fragment Lifecycle
 onAttach --> onCreate --> onCreateView --> onActivityCreated --> onStart --> onResume
-                           ^^^^^^^^^^^
-                    (Recreated from backstack)
-                           ^^^^^^^^^^^
---> onPause --> onStop -> onDestroyView --> onDestroy --> onDetach
+--> onPause --> onStop -> onDestroyView((Recreated from backstack with onCreateView) else -->) --> onDestroy --> onDetach
   
 
-// Configuration changes
+## Configuration changes
 - Device Rotation
 - User takes a phone call
 - phone notifications
