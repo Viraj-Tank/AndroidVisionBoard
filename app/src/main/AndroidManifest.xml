@@ -12,8 +12,8 @@
         android:theme="@style/Theme.AndroidVisionBoard"
         tools:targetApi="31">
         <activity
-            android:name=".ui.fragmentActivity.FragActivity"
-            android:exported="true">
+            android:name=".visionBoard.ui.VisionBoardActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,10 +21,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.mainActivity.MainActivity"
+            android:name=".ui.fragmentActivity.FragActivity"
             android:exported="true">
-
         </activity>
+        <activity
+            android:name=".ui.mainActivity.MainActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>
