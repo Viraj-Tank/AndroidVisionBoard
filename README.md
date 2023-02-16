@@ -9,14 +9,21 @@ Android Building blocks
 // Activity Lifecycle
 
 - FIRST TIME ENTERS 
-- onCreate --> onStart --> onResume
+onCreate --> onStart --> onResume5
 
 - WHEN USER GOES TO BACKGROUND 
-- onPause --> onStop
+onPause --> onStop
 
 - WHEN USER COMES BACK TO APP 
-- onRestart --> onStart --> onResume
+onRestart --> onStart --> onResume
 
+// Fragment Lifecycle
+onAttach --> onCreate --> onCreateView --> onActivityCreated --> onStart --> onResume
+                           ^^^^^^^^^^^
+                    (Recreated from backstack)
+                           ^^^^^^^^^^^
+--> onPause --> onStop -> onDestroyView --> onDestroy --> onDetach
+  
 
 // Configuration changes
 - Device Rotation

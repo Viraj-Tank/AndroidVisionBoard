@@ -2,13 +2,15 @@ package com.novuspax.androidvisionboard.ui.fragmentActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
 import com.novuspax.androidvisionboard.R
 import com.novuspax.androidvisionboard.databinding.ActivityFragBinding
-import com.novuspax.androidvisionboard.databinding.ActivityMainBinding
+import com.novuspax.androidvisionboard.utils.Constants.HELLO_FRAGMENT
+import com.novuspax.androidvisionboard.utils.Constants.SECOND_FRAGMENT
 
-class FragActivity : AppCompatActivity() {
+class FragActivity : AppCompatActivity(), StaticFragment.OnSelectedItemListener {
 
-    val HELLO_FRAGMENT = "HELLO_TAG"
     private val binding: ActivityFragBinding by lazy {
         ActivityFragBinding.inflate(layoutInflater)
     }
@@ -43,5 +45,19 @@ class FragActivity : AppCompatActivity() {
             /*frag = supportFragmentManager.findFragmentByTag(HELLO_FRAGMENT) as StaticFragment
             frag.setEditTextDataToTextView()*/
         }
+
+        binding.btnChange.setOnClickListener {
+            supportFragmentManager.beginTransaction().let {
+                it.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                it.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+                it.replace(R.id.main_frame, SecondFragment(), SECOND_FRAGMENT)
+                it.addToBackStack("Name")
+                it.commit()
+            }
+        }
+    }
+
+    override fun clicked() {
+        Toast.makeText(this@FragActivity, "Clicked", Toast.LENGTH_SHORT).show()
     }
 }
