@@ -7,4 +7,4 @@ data class Board(
     val name: String,
     val description: String,
     val imageUrl: Int
-)
+) : java.io.Serializable
