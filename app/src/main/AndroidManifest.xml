@@ -12,20 +12,31 @@
         android:theme="@style/Theme.AndroidVisionBoard"
         tools:targetApi="31">
         <activity
-            android:name=".visionBoard.ui.VisionBoardDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".visionBoard.ui.VisionBoardActivity"
+            android:name=".contentProvider.ContentProviderMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+
+
+        <!-- UNCOMMENT THIS FOR VISION BOARD APPLICATION -->
+        <activity
+            android:name=".visionBoard.ui.VisionBoardActivity"
+            android:exported="true">
         </activity>
         <activity
+            android:name=".visionBoard.ui.VisionBoardDetailActivity"
+            android:exported="false" />
+        <!-- ///////// -->
+
+
+        <activity
             android:name=".ui.fragmentActivity.FragActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ui.mainActivity.MainActivity"
             android:exported="true" />

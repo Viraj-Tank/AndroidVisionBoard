@@ -21,6 +21,10 @@ onRestart --> onStart --> onResume
 onAttach --> onCreate --> onCreateView --> onActivityCreated --> onStart --> onResume
 --> onPause --> onStop -> onDestroyView((Recreated from backstack with onCreateView) else -->) --> onDestroy --> onDetach
   
+## Content provider
+allows connectivity between our app and structured data (device data)
+can access data using CONTENT RESOLVER as URI from OTHER APPS as Cursor
+we can also expose our data to other apps
 
 ## Configuration changes
 - Device Rotation
