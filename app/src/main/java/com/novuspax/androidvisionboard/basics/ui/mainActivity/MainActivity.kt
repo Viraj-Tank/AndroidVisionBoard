@@ -6,8 +6,8 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Button
 import android.widget.RelativeLayout
 import com.novuspax.androidvisionboard.databinding.ActivityMainBinding
-import com.novuspax.androidvisionboard.utils.Constants.COUNTER_STATE_KEY
-import com.novuspax.androidvisionboard.utils.Constants.TEXT_SCALE_KEY
+import com.novuspax.androidvisionboard.basics.utils.Constants.COUNTER_STATE_KEY
+import com.novuspax.androidvisionboard.basics.utils.Constants.TEXT_SCALE_KEY
 
 class MainActivity : AppCompatActivity() {
 

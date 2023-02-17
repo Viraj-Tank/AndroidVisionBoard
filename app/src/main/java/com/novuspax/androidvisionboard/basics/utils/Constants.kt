@@ -1,4 +1,4 @@
-package com.novuspax.androidvisionboard.utils
+package com.novuspax.androidvisionboard.basics.utils
 
 object Constants {
     const val COUNTER_STATE_KEY = "counter"

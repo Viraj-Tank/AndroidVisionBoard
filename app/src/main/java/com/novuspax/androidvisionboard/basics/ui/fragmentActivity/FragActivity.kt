@@ -6,8 +6,8 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import com.novuspax.androidvisionboard.R
 import com.novuspax.androidvisionboard.databinding.ActivityFragBinding
-import com.novuspax.androidvisionboard.utils.Constants.HELLO_FRAGMENT
-import com.novuspax.androidvisionboard.utils.Constants.SECOND_FRAGMENT
+import com.novuspax.androidvisionboard.basics.utils.Constants.HELLO_FRAGMENT
+import com.novuspax.androidvisionboard.basics.utils.Constants.SECOND_FRAGMENT
 
 class FragActivity : AppCompatActivity(), StaticFragment.OnSelectedItemListener {
 

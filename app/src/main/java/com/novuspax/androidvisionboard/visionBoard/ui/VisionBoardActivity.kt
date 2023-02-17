@@ -3,9 +3,8 @@ package com.novuspax.androidvisionboard.visionBoard.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.novuspax.androidvisionboard.R
-import com.novuspax.androidvisionboard.databinding.ActivityMainBinding
 import com.novuspax.androidvisionboard.databinding.ActivityVisionBoardBinding
-import com.novuspax.androidvisionboard.utils.Constants.BOARD_FRAGMENT
+import com.novuspax.androidvisionboard.basics.utils.Constants.BOARD_FRAGMENT
 import com.novuspax.androidvisionboard.visionBoard.model.Board
 
 class VisionBoardActivity : AppCompatActivity() {
