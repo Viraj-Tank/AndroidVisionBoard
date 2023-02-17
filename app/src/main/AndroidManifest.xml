@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidVisionBoard"
         tools:targetApi="31">
+
+        <!-- ADD LAUNCHER HERE FOR CONTENT PROVIDER/ROOM APPLICATION -->
         <activity
             android:name=".contentProvider.ContentProviderMainActivity"
             android:exported="true">
@@ -19,11 +21,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <!--AUTHORITIES MEANS ID FROM THIS CONTENT PROVIDER AND IT SHOULD BE UNIQUE-->
+        <provider
+            android:authorities="com.novuspax.androidvisionboard"
+            android:name=".contentProvider.room.DreamContentProvider"
+            android:exported="true" />
+        <!-- /////////////////////////////// -->
 
 
-        <!-- UNCOMMENT THIS FOR VISION BOARD APPLICATION -->
+
+        <!-- ADD LAUNCHER HERE FOR VISION BOARD APPLICATION -->
         <activity
             android:name=".visionBoard.ui.VisionBoardActivity"
             android:exported="true">
@@ -31,7 +39,7 @@
         <activity
             android:name=".visionBoard.ui.VisionBoardDetailActivity"
             android:exported="false" />
-        <!-- ///////// -->
+        <!-- /////////////////////////////// -->
 
 
         <activity
