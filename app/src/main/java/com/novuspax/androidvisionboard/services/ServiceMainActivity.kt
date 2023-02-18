@@ -71,7 +71,7 @@ class ServiceMainActivity : AppCompatActivity() {
         super.onStart()
         val serviceIntent = Intent(this, MyBinderService::class.java)
         bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE)
-        // BIND_AUTO_CREATE --> when i bind to activity we create the service automatically
+        // BIND_AUTO_CREATE flag --> when i bind to activity, we invoke the service automatically
         e("TAG", "onStart: Service Started")
     }
 
