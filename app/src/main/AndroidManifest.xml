@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,20 +13,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidVisionBoard"
         tools:targetApi="31">
-        <service
-            android:name=".jobScheduler.service.JobSchedulerService"
-            android:enabled="true"
-            android:permission="android.permission.BIND_JOB_SERVICE"
-            android:exported="false" />
-
         <activity
-            android:name=".jobScheduler.JobSchedulerMainActivity"
+            android:name=".workManager.WorkManagerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <service
+            android:name=".jobScheduler.service.JobSchedulerService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <activity
+            android:name=".jobScheduler.JobSchedulerMainActivity"
+            android:exported="true">
         </activity>
 
         <service
@@ -44,7 +49,7 @@
 
         <activity
             android:name=".services.ServiceMainActivity"
-            android:exported="true"></activity> <!-- ADD LAUNCHER BELOW FOR CONTENT PROVIDER/ROOM APPLICATION -->
+            android:exported="true" /> <!-- ADD LAUNCHER BELOW FOR CONTENT PROVIDER/ROOM APPLICATION -->
         <activity
             android:name=".contentProvider.ContentProviderMainActivity"
             android:exported="true" /> <!-- AUTHORITIES MEANS ID FROM THIS CONTENT PROVIDER AND IT SHOULD BE UNIQUE -->

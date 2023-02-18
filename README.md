@@ -39,6 +39,12 @@ all business logic stays in service
 optimizes battery use and other resources
 can run a recurring job at set intervals
 
+## Work manager API
+OS decides which task to run from all worker queue
+
+IntentService --> JobIntentService
+JobScheduler --> WorkManager
+
 ## Configuration changes
 - Device Rotation
 - User takes a phone call
