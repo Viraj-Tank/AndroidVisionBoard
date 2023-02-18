@@ -4,9 +4,9 @@ import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
+import android.util.Log.d
 import android.util.Log.e
-import com.novuspax.androidvisionboard.R
-import com.novuspax.androidvisionboard.databinding.ActivityContentProviderMainBinding
+import android.widget.Toast
 import com.novuspax.androidvisionboard.databinding.ActivityServiceMainBinding
 
 class ServiceMainActivity : AppCompatActivity() {
@@ -29,10 +29,22 @@ class ServiceMainActivity : AppCompatActivity() {
             }
         }
     }
-    override fun onResume() {
-        super.onResume()
-//        below IntentFilter(action) is defined inside MyService when we send the broadcast
-//        registerReceiver(receiver, IntentFilter(MyService.NOTIFICATION))
+
+    var binderService: MyBinderService? = null
+    private val serviceConnection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            // here we will have connection with service and we can call any methods from service
+            val binder = service as MyBinderService.ServiceBinder
+            binderService = binder.getService()
+            e("TAG", "onServiceConnected: ", )
+        }
+
+        override fun onServiceDisconnected(name: ComponentName?) {
+            if (binderService != null) {
+                binderService = null
+            }
+            e("TAG", "onServiceDisconnected: ")
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,5 +60,30 @@ class ServiceMainActivity : AppCompatActivity() {
             )
         }
 
+        binding.btnServiceMethod.setOnClickListener {
+            val data = binderService?.methodInsideService()
+            Toast.makeText(this@ServiceMainActivity, data, Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val serviceIntent = Intent(this, MyBinderService::class.java)
+        bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE)
+        // BIND_AUTO_CREATE --> when i bind to activity we create the service automatically
+        e("TAG", "onStart: Service Started")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        unbindService(serviceConnection)
+        e("TAG", "onStop: Service unbound", )
+    }
+
+    override fun onResume() {
+        super.onResume()
+//        below IntentFilter(action) is defined inside MyService when we send the broadcast
+//        registerReceiver(receiver, IntentFilter(MyService.NOTIFICATION))
     }
 }
