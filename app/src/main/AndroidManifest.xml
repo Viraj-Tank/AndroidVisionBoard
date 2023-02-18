@@ -12,9 +12,18 @@
         android:theme="@style/Theme.AndroidVisionBoard"
         tools:targetApi="31">
         <service
+            android:name=".services.MyBinderService"
+            android:enabled="true"
+            android:exported="false"/>
+        <service
+            android:name=".services.MyIntentService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
             android:name=".services.MyService"
             android:enabled="true"
             android:exported="false" />
+
         <activity
             android:name=".services.ServiceMainActivity"
             android:exported="true">
@@ -23,15 +32,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-
-        <!-- ADD LAUNCHER HERE FOR CONTENT PROVIDER/ROOM APPLICATION -->
+        </activity> <!-- ADD LAUNCHER HERE FOR CONTENT PROVIDER/ROOM APPLICATION -->
         <activity
             android:name=".contentProvider.ContentProviderMainActivity"
-            android:exported="true">
-
-        </activity> <!-- AUTHORITIES MEANS ID FROM THIS CONTENT PROVIDER AND IT SHOULD BE UNIQUE -->
+            android:exported="true"></activity> <!-- AUTHORITIES MEANS ID FROM THIS CONTENT PROVIDER AND IT SHOULD BE UNIQUE -->
         <provider
             android:name=".contentProvider.room.DreamContentProvider"
             android:authorities="com.novuspax.androidvisionboard"

@@ -9,7 +9,7 @@
 ## Activity Lifecycle
 
 - FIRST TIME ENTERS 
-onCreate --> onStart --> onResume5
+onCreate --> onStart --> onResume
 
 - WHEN USER GOES TO BACKGROUND 
 onPause --> onStop
