@@ -12,9 +12,25 @@
         android:theme="@style/Theme.AndroidVisionBoard"
         tools:targetApi="31">
         <service
+            android:name=".jobScheduler.service.JobSchedulerService"
+            android:enabled="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false" />
+
+        <activity
+            android:name=".jobScheduler.JobSchedulerMainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
             android:name=".services.MyBinderService"
             android:enabled="true"
-            android:exported="false"/>
+            android:exported="false" />
         <service
             android:name=".services.MyIntentService"
             android:enabled="true"
@@ -26,21 +42,15 @@
 
         <activity
             android:name=".services.ServiceMainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- ADD LAUNCHER HERE FOR CONTENT PROVIDER/ROOM APPLICATION -->
+            android:exported="true"></activity> <!-- ADD LAUNCHER BELOW FOR CONTENT PROVIDER/ROOM APPLICATION -->
         <activity
             android:name=".contentProvider.ContentProviderMainActivity"
-            android:exported="true"></activity> <!-- AUTHORITIES MEANS ID FROM THIS CONTENT PROVIDER AND IT SHOULD BE UNIQUE -->
+            android:exported="true" /> <!-- AUTHORITIES MEANS ID FROM THIS CONTENT PROVIDER AND IT SHOULD BE UNIQUE -->
         <provider
             android:name=".contentProvider.room.DreamContentProvider"
             android:authorities="com.novuspax.androidvisionboard"
             android:exported="true" /> <!-- /////////////////////////////// -->
-        <!-- ADD LAUNCHER HERE FOR VISION BOARD APPLICATION -->
+        <!-- ADD LAUNCHER BELOW FOR VISION BOARD APPLICATION -->
         <activity
             android:name=".visionBoard.ui.VisionBoardActivity"
             android:exported="true" />
