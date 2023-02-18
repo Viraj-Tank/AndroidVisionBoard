@@ -11,10 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidVisionBoard"
         tools:targetApi="31">
-
-        <!-- ADD LAUNCHER HERE FOR CONTENT PROVIDER/ROOM APPLICATION -->
+        <service
+            android:name=".services.MyService"
+            android:enabled="true"
+            android:exported="false" />
         <activity
-            android:name=".contentProvider.ContentProviderMainActivity"
+            android:name=".services.ServiceMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,26 +24,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--AUTHORITIES MEANS ID FROM THIS CONTENT PROVIDER AND IT SHOULD BE UNIQUE-->
+
+
+        <!-- ADD LAUNCHER HERE FOR CONTENT PROVIDER/ROOM APPLICATION -->
+        <activity
+            android:name=".contentProvider.ContentProviderMainActivity"
+            android:exported="true">
+
+        </activity> <!-- AUTHORITIES MEANS ID FROM THIS CONTENT PROVIDER AND IT SHOULD BE UNIQUE -->
         <provider
-            android:authorities="com.novuspax.androidvisionboard"
             android:name=".contentProvider.room.DreamContentProvider"
-            android:exported="true" />
-        <!-- /////////////////////////////// -->
-
-
-
+            android:authorities="com.novuspax.androidvisionboard"
+            android:exported="true" /> <!-- /////////////////////////////// -->
         <!-- ADD LAUNCHER HERE FOR VISION BOARD APPLICATION -->
         <activity
             android:name=".visionBoard.ui.VisionBoardActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".visionBoard.ui.VisionBoardDetailActivity"
-            android:exported="false" />
-        <!-- /////////////////////////////// -->
-
-
+            android:exported="false" /> <!-- /////////////////////////////// -->
         <activity
             android:name=".ui.fragmentActivity.FragActivity"
             android:exported="true" />
