@@ -31,10 +31,10 @@ class JobSchedulerMainActivity : AppCompatActivity() {
         binding.btnJob.setOnClickListener {
             val jobScheduler: JobScheduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
             val jobInfo: JobInfo = JobInfo.Builder(101, ComponentName(this, JobSchedulerService::class.java))
-//                .setMinimumLatency(0) // after how long we want to run this job
+                .setMinimumLatency(0) // after how long we want to run this job
 //                .setPersisted(true)
-                .setRequiresCharging(true)
-                .setPeriodic(15 * 60 * 1000) // minimum 15 minutes
+//                .setRequiresCharging(true)
+//                .setPeriodic(15 * 60 * 1000) // minimum 15 minutes
                 .build()
 
             jobScheduler.schedule(jobInfo)

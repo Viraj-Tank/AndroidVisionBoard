@@ -8,6 +8,10 @@ import android.os.IBinder
 import android.util.Log
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import org.json.JSONObject
+import java.net.HttpURLConnection
+import java.net.URL
+import java.util.Scanner
 
 // add permission in JobSchedulerService tag inside manifest
 class JobSchedulerService : JobService() {
@@ -19,7 +23,8 @@ class JobSchedulerService : JobService() {
         Log.e(TAG, "onStartJob: ${params?.jobId}")
 //        jobFinished(params, false)
 //        return false
-        doBackgroundWork(params)
+//        doBackgroundWork(params)
+        downloadJson(params)
         return true
     }
 
@@ -30,6 +35,38 @@ class JobSchedulerService : JobService() {
 //        return false
     }
 
+    private fun downloadJson(params: JobParameters?) {
+        Thread {
+            val intent: Intent = Intent("jobSchedulerJsonAPICall")
+            try {
+                val url = URL("https://jsonplaceholder.typicode.com/todos/1")
+                val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
+                connection.requestMethod = "GET"
+                connection.connect()
+
+                val responseCode: Int = connection.responseCode
+                if (responseCode == 200) {
+                    val scanner = Scanner(url.openStream())
+                    val builder = java.lang.StringBuilder()
+                    while (scanner.hasNext()) {
+                        if (isJobCancelled) return@Thread
+                        builder.append(scanner.nextLine())
+                    }
+                    Log.e(TAG, "downloadedJson: API Response$builder")
+
+                    val obj: JSONObject = JSONObject(builder.toString())
+                    Log.e(TAG, "downloadJson: Name only ${obj.getString("title")}")
+                } else {
+
+                }
+
+            } catch (e: java.lang.Exception) {
+                Log.e(TAG, "downloadJson: Catch block ${e.message}")
+            }
+
+        }.start()
+    }
+
     private fun doBackgroundWork(params: JobParameters?) {
         Thread {
             repeat(10) {
@@ -38,7 +75,7 @@ class JobSchedulerService : JobService() {
                 }
 
                 val jobIntent = Intent("jobIntentBroadcast")
-                jobIntent.putExtra("num",it)
+                jobIntent.putExtra("num", it)
                 sendBroadcast(jobIntent)
 
                 Log.e(TAG, "doBackgroundWork: $it")
